@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% load static %} {% block css %}
+<link rel="stylesheet" href="/static/style.css" />
+{% endblock %} {% block body %}
+<div class="container">
+  <form class="w-50" method="POST">
+    {% csrf_token %}
+    <div >
+      {% if messages %} {% for message in messages %}
+      <div class="alert alert-danger" role="alert">{{ message|escape }}</div>
+      {% endfor %} {% endif %} {% if form.errors %}
+      <div class="error-message mb-4">
+        {% for field in form %} {% for error in field.errors %}
+        <div class="alert alert-danger" role="alert">{{ error|escape }}</div>
+        {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">{{ error|escape }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    {% for field in form %}
+    <p >
+      <label>{{ field.label }}</label>
+      <br />
+      {{ field }}
+    </p>
+    {% endfor %} {{form.media}}
+
+    <button class="submit">Submit</button>
+  </form>
+</div>
+{% endblock %}

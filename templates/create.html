@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="/static/style.css" />
+{% endblock %} {% block body %}
+<div class="container">
+  <h2>Create Blog</h2>
+
+  {% comment %}
+  <form method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" value="Save" />
+  </form>
+  {% endcomment %}
+  <div class="create_form">
+    <form method="POST">
+      {% csrf_token %}
+      <p>{{ form.name.label_tag }} {{ form.name }}</p>
+      <p>{{form.description.label_tag }} {{ form.description }}</p>
+      <p>{{ form.image.label_tag}} {{ form.image }}</p>
+
+      <input class="submit" type="submit" value="Save" />
+    </form>
+  </div>
+</div>
+{% endblock body %}

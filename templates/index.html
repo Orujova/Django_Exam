@@ -1,0 +1,27 @@
+{% extends 'base.html' %}{% load static %} {% block css %}
+<link rel="stylesheet" href="/static/style.css" />
+{% endblock %} {% block body %}
+<div class="container">
+  <h2 style="padding-bottom: 8px;text-align:center">Blog List</h2>
+  {% for blog in blogs %}
+  <div style="height: 35vh">
+    <a
+      href="{% url 'Blog:detail' blog.id %}"
+      style="font-size: 24px; color: #fff"
+      >{{ blog.name }}</a
+    >
+    <p>{{ blog.description|safe|truncatechars:50  }}</p>
+    {% if request.user in blog.likes.all %}
+    <button class="like">
+      <a href="{% url 'Blog:like_blog' blog.id %}">Unlike</a>
+    </button>
+    {% else %}
+    <button class="like">
+      <a href="{% url 'Blog:like_blog' blog.id %}">Like</a>
+    </button>
+    {% endif %}
+    
+  </div>
+  {% endfor %} 
+</div>
+{% endblock body %}

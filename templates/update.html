@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block css %}
+<link rel="stylesheet" href="/static/style.css" />
+{% endblock %}
+
+{% block body %}
+  
+<h2>Update Blog</h2>
+  <form method="POST" >
+    {% csrf_token %}
+    
+    <p>{{ form.name.label_tag }} {{ form.name }} </p>
+    <p>{{form.description.label_tag }} {{ form.description }} </p>
+    <p>{{ form.image.label_tag}} {{ form.image }}</p>
+    <input class="submit" type="submit" value="Save">
+  </form>
+{% endblock body %}
+  
+

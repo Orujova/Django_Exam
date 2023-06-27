@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% load static %} {% block css %}
+<link rel="stylesheet" href="/static/style.css" />
+{% endblock %} {% block body%}
+
+<div class="container" style="height: 35vh">
+  <h1 style="padding-bottom: 8px; text-align: center">
+    Detail information about Blog
+  </h1>
+<div style="font-size: 24px; color: #fff;padding-bottom:8px">
+
+  <h3>{{ blog.name }}</h3>
+</div>
+  
+  <p style="font-size: 18px;padding-bottom:8px">{{ blog.description }}</p>
+  <img src="{{ blog.image.url }}" width="300" height="300" />
+</div>
+{% endblock%}

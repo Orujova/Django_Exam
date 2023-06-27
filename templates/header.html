@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="header">
+        <header>
+          <div class="container">
+            <a class="navbar-brand" href="#">
+              {% if request.user.is_authenticated %} {{ request.user.username }}
+              {% else %}
+              <img
+                src="https://preview.colorlib.com/theme/karma/img/logo.png"
+                alt=""
+              />
+              {% endif %}
+            </a>
+
+            <div class="navbar">
+              <ul class="nav-item">
+                <li><a href="{% url 'Blog:home' %}">Home</a></li>
+
+                <li class="has_dropdown">
+                  <a href="#">Blog</a>
+                  <ul class="dropdown">
+                    <li><a href="{% url 'Blog:create' %}">Create</a></li>
+                    
+                  </ul>
+                </li>
+                <li class="has_dropdown">
+                  <a href="#">Pages</a>
+                  <ul class="dropdown">
+                    <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                    <li>
+                      <a href="{% url 'accounts:register' %}">Register</a>
+                    </li>
+                    <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+
+              <ul class="last-icon">
+                <li>
+                  <a href="#"><i class="fa-solid fa-basket-shopping"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </header>
+      </div>
+    </div>
+  </body>
+</html>
